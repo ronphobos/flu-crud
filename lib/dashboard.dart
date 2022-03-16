@@ -8,8 +8,69 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+
+  TextEditingController nom = TextEditingController();
+  TextEditingController email = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("CRUD FLUTTER"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          children: [
+            TextField(
+              controller: nom,
+              decoration: InputDecoration(
+                  labelText: "Le nom de l'utilisateur",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  )),
+            ),
+            SizedBox(
+              height: 15.0,
+            ),
+            TextField(
+              controller: email,
+              decoration: InputDecoration(
+                  labelText: "Le mail de l'utilisateur",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  )),
+            ),
+            SizedBox(
+              height: 15.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.green,
+                  ),
+                  onPressed: () {},
+                  child: Text("Créer"),
+                ),
+                ElevatedButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.yellow,
+                  ),
+                  onPressed: () {},
+                  child: Text("Modifier"),
+                ),
+                ElevatedButton(
+                  style: TextButton.styleFrom(backgroundColor: Colors.red),
+                  onPressed: () {},
+                  child: Text("Supprimé"),
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

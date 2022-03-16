@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:hope/auth/login.dart';
+import 'package:hope/dashboard.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,7 +35,7 @@ class _splashScreenState extends State<splashScreen> {
     // METTRE LE SPLASH SCREEN A 3 SEC
     Timer(Duration(seconds: 5), () {
       Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (_) => Login()));
+          .pushReplacement(MaterialPageRoute(builder: (_) => Dashboard()));
     });
   }
 
