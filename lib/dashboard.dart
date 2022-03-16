@@ -8,9 +8,25 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-
   TextEditingController nom = TextEditingController();
   TextEditingController email = TextEditingController();
+  cree() async {
+    try {} catch (e) {
+      print(e);
+    }
+  }
+
+  modifie() async {
+    try {} catch (e) {
+      print(e);
+    }
+  }
+
+  supprimer() async {
+    try {} catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,19 +67,31 @@ class _DashboardState extends State<Dashboard> {
                   style: TextButton.styleFrom(
                     backgroundColor: Colors.green,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    cree();
+                    nom.clear();
+                    email.clear();
+                  },
                   child: Text("Créer"),
                 ),
                 ElevatedButton(
                   style: TextButton.styleFrom(
                     backgroundColor: Colors.yellow,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    modifie();
+                    nom.clear();
+                    email.clear();
+                  },
                   child: Text("Modifier"),
                 ),
                 ElevatedButton(
                   style: TextButton.styleFrom(backgroundColor: Colors.red),
-                  onPressed: () {},
+                  onPressed: () {
+                    supprimer();
+                    nom.clear();
+                    email.clear();
+                  },
                   child: Text("Supprimé"),
                 ),
               ],
