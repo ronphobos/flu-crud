@@ -19,10 +19,8 @@ class _DashboardState extends State<Dashboard> {
   // AJOUT DE FONCTION CREATION
   cree() async {
     try {
-      await firebase.collection('User')
-      .doc(nom.text)
-      .set({
-        'nom' : nom.text,
+      await firebase.collection('User').doc(nom.text).set({
+        'nom': nom.text,
         'email': email.text,
       });
     } catch (e) {
@@ -34,7 +32,7 @@ class _DashboardState extends State<Dashboard> {
   modifie() async {
     try {
       firebase.collection('User').doc(nom.text).update({
-        'nom' : nom.text,
+        'nom': nom.text,
       });
     } catch (e) {
       print(e);
@@ -44,7 +42,7 @@ class _DashboardState extends State<Dashboard> {
   // AJOUT DE FONCTION SUPPRESSION
   supprimer() async {
     try {
-       firebase.collection('User').doc(nom.text).delete();
+      firebase.collection('User').doc(nom.text).delete();
     } catch (e) {
       print(e);
     }
@@ -117,7 +115,35 @@ class _DashboardState extends State<Dashboard> {
                   child: Text("Supprimé"),
                 ),
               ],
-            )
+            ),
+            Container(
+              height: 300,
+              width: double.infinity,
+              child: SingleChildScrollView(
+                physics: ScrollPhysics(),
+                child: StreamBuilder<QuerySnapshot>(
+                  stream: firebase.collection("User").snapshots(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return ListView.builder(
+                          shrinkWrap: true,
+                          physics: ScrollPhysics(),
+                          itemBuilder: (context, i) {
+                            QueryDocumentSnapshot donne =
+                                snapshot.data!.docs[i];
+
+                            return ListTile(
+                              title: Text(donne['nom']),
+                              subtitle: Text(donne['email']),
+                            );
+                          });
+                    } else {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                  },
+                ),
+              ),
+            ),
           ],
         ),
       ),
