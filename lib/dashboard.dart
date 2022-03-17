@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
@@ -11,14 +13,22 @@ class _DashboardState extends State<Dashboard> {
   TextEditingController nom = TextEditingController();
   TextEditingController email = TextEditingController();
 
+  // CREATION D'UNE INSTANCE DE FIREBASE
+  final firebase = FirebaseFirestore.instance;
+
   // AJOUT DE FONCTION CREATION
   cree() async {
-    try {} catch (e) {
+    try {
+      await firebase.collection('User').doc().set({
+        'nom' : nom.text,
+        'email': email.text,
+      });
+    } catch (e) {
       print(e);
     }
   }
 
- // AJOUT DE FONCTION MODIFICATION 
+  // AJOUT DE FONCTION MODIFICATION
   modifie() async {
     try {} catch (e) {
       print(e);
