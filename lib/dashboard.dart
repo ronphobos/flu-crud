@@ -19,7 +19,9 @@ class _DashboardState extends State<Dashboard> {
   // AJOUT DE FONCTION CREATION
   cree() async {
     try {
-      await firebase.collection('User').doc().set({
+      await firebase.collection('User')
+      .doc(nom.text)
+      .set({
         'nom' : nom.text,
         'email': email.text,
       });
@@ -30,14 +32,20 @@ class _DashboardState extends State<Dashboard> {
 
   // AJOUT DE FONCTION MODIFICATION
   modifie() async {
-    try {} catch (e) {
+    try {
+      firebase.collection('User').doc(nom.text).update({
+        'nom' : nom.text,
+      });
+    } catch (e) {
       print(e);
     }
   }
 
   // AJOUT DE FONCTION SUPPRESSION
   supprimer() async {
-    try {} catch (e) {
+    try {
+       firebase.collection('User').doc(nom.text).delete();
+    } catch (e) {
       print(e);
     }
   }
