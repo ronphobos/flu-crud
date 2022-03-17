@@ -10,18 +10,22 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   TextEditingController nom = TextEditingController();
   TextEditingController email = TextEditingController();
+
+  // AJOUT DE FONCTION CREATION
   cree() async {
     try {} catch (e) {
       print(e);
     }
   }
 
+ // AJOUT DE FONCTION MODIFICATION 
   modifie() async {
     try {} catch (e) {
       print(e);
     }
   }
 
+  // AJOUT DE FONCTION SUPPRESSION
   supprimer() async {
     try {} catch (e) {
       print(e);
